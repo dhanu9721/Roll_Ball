@@ -1,0 +1,637 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488b9ffbdee9d4f4ea9a2bcaa4e19e03, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  levelNumber: 2
+  levelName: Level_2
+  timeLimit: 10
+  rooms:
+    startRoom:
+      walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: -33
+            y: 5.5
+            z: -66
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: -66
+            y: 5.5
+            z: -33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Red
+        materialType: Red
+        transform:
+          Position:
+            x: -75
+            y: 0
+            z: -55
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints:
+      - Position:
+          x: -50
+          y: 0
+          z: -50
+        Rotation:
+          x: 0
+          y: 0
+          z: 0
+        Scale:
+          x: 0
+          y: 0
+          z: 0
+    CommonRooms:
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: -33
+            y: 5.5
+            z: 66
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: -66
+            y: 5.5
+            z: 33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Red
+        materialType: 
+        transform:
+          Position:
+            x: -50
+            y: 0
+            z: 66
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Blue
+        materialType: 
+        transform:
+          Position:
+            x: -80
+            y: 0
+            z: 65
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 33
+            y: 5.5
+            z: 0
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Pink
+        materialType: 
+        transform:
+          Position:
+            x: 85
+            y: 0
+            z: 5
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Blue
+        materialType: 
+        transform:
+          Position:
+            x: 50
+            y: 0
+            z: 5
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 5.5
+            z: -33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Pink
+        materialType: 
+        transform:
+          Position:
+            x: 15
+            y: 0
+            z: -75
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Brown
+        materialType: 
+        transform:
+          Position:
+            x: -15
+            y: 0
+            z: -50
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 31
+            y: 5.5
+            z: 66
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 66
+            y: 5.5
+            z: 33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Brown
+        materialType: 
+        transform:
+          Position:
+            x: 80
+            y: 0
+            z: 65
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Gold
+        materialType: 
+        transform:
+          Position:
+            x: 50
+            y: 0
+            z: 65
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 5.5
+            z: 33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Gold
+        materialType: 
+        transform:
+          Position:
+            x: 15
+            y: 0
+            z: 65
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Green
+        materialType: 
+        transform:
+          Position:
+            x: -15
+            y: 0
+            z: 65
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 33
+            y: 5.5
+            z: -66
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: 66
+            y: 5.5
+            z: -33
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Green
+        materialType: 
+        transform:
+          Position:
+            x: 50
+            y: 0
+            z: -80
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Yellow
+        materialType: 
+        transform:
+          Position:
+            x: 80
+            y: 0
+            z: -50
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    - walls:
+      - tag: Wall
+        materialType: 
+        transform:
+          Position:
+            x: -33
+            y: 5.5
+            z: 0
+          Rotation:
+            x: 0
+            y: 90
+            z: 0
+          Scale:
+            x: 66
+            y: 10
+            z: 4
+      teleportPoints:
+      - tag: Yellow
+        materialType: 
+        transform:
+          Position:
+            x: -55
+            y: 0
+            z: 15
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      - tag: Voilet
+        materialType: 
+        transform:
+          Position:
+            x: -85
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: 
+        materialType: 
+        transform:
+          Position:
+            x: 0
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 0
+            y: 0
+            z: 0
+      startPoints: []
+    gameOverRoom:
+      walls: []
+      teleportPoints:
+      - tag: Voilet
+        materialType: 
+        transform:
+          Position:
+            x: 15
+            y: 0
+            z: 0
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      gameOverPoint:
+        tag: GameOver
+        materialType: 
+        transform:
+          Position:
+            x: -15
+            y: 0
+            z: 15
+          Rotation:
+            x: 0
+            y: 0
+            z: 0
+          Scale:
+            x: 15
+            y: 1
+            z: 15
+      startPoints: []
+  startPoints:
+  - Position:
+      x: 80
+      y: 0
+      z: -80
+    Rotation:
+      x: 0
+      y: 0
+      z: 0
+    Scale:
+      x: 0
+      y: 0
+      z: 0

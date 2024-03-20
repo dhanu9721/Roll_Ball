@@ -45,9 +45,9 @@ public class Room : MonoBehaviour
                 GameObject instance = Instantiate(TeleportPoint, TeleportPointContainer);
 
                 TeleportPoint teleportComponent = instance.GetComponent<TeleportPoint>();
-                teleportComponent.init(teleportPoint.tag);
+                teleportComponent.init(teleportPoint);
                 SetTransformOfObject(instance, TeleportPointContainer, teleportPoint.transform);
-                setTagAndMaterial(instance, teleportMaterial, teleportPoint);
+                //setTagAndMaterial(instance, teleportMaterial, teleportPoint);
                 teleportPortPointsList.Add(teleportComponent);
             }
         }
@@ -116,6 +116,7 @@ public class Room : MonoBehaviour
 
     private Color GetColorByName(string name)
     {
+        Debug.Log("Color Name : " + name);
         Color color;
         if (ColorUtility.TryParseHtmlString(name, out color))
         {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private FixedJoystick _fixedJoystick;
-    [SerializeField] private GameOver _GameOver;
     public LocalPlayerData[] localPlayerData;
     public GameObject player;
     public Transform PlayerContainer;
@@ -28,10 +27,10 @@ public class PlayerManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        _GameOver.gameObject.SetActive(false);
     }
     public void GeneratePlayer(LevelData levelData,List<TeleportPoint> teleportPointsList,Transform myStartPoint, Transform MyGAmeOverPoint)
     {
+        _fixedJoystick.ResetHandle();
         GameObject instance = Instantiate(player, PlayerContainer);
         PlayerData playerData = GetPlayerData(levelData);
         Debug.Log("my pos : " + myStartPoint.position);
@@ -39,8 +38,8 @@ public class PlayerManager : MonoBehaviour
         instance.transform.localPosition = myStartPoint.position;
         Player playerComponent = instance.GetComponent<Player>();
         //healthManager.AddHealth(playerData.health);
-        playerComponent.init(playerData,myStartPoint, teleportPointsList, _fixedJoystick, healthContainer,_GameOver);
-        instance.transform.parent = PlayerContainer;
+        playerComponent.init(playerData,myStartPoint, teleportPointsList, _fixedJoystick, healthContainer);
+        //instance.transform.parent = PlayerContainer;
         //playerComponent.SetTransformOfObject(instance, PlayerContainer, levelData.startPoints[0]);
     }
 

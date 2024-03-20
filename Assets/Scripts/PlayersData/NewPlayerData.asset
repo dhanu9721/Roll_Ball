@@ -17,11 +17,11 @@ MonoBehaviour:
   health: 3
   localScale: {x: 10, y: 10, z: 10}
   localRotation: {x: 0, y: 0, z: 0, w: 1}
-  speed: 15
+  speed: 25
   currentLevelData: {fileID: 11400000, guid: cfbd2ef0a67c81c448938b0458706d5c, type: 2}
   playerObject:
     tag: Ball
-    materialColor: '#808080'
+    materialColor: '#ffffff'
     transform:
       Position:
         x: 0

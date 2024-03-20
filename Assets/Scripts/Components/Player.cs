@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Health;
     private Transform HealthContainer;
     private Transform MystartPoint;
-    private GameOver _GameOver;
+    //private GameOver _GameOver;
     private List<PlayerHealth> Healths = new List<PlayerHealth>();
 
     private FixedJoystick _fixedJoystick;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
             //gameObject.transform.position = MystartPoint.position;
         }
     }
-    public void init(PlayerData playerdata,Transform startPoint,  List<TeleportPoint> teleportPointsList, FixedJoystick fixedJoystick, Transform healthContainer, GameOver gameOver)
+    public void init(PlayerData playerdata,Transform startPoint,  List<TeleportPoint> teleportPointsList, FixedJoystick fixedJoystick, Transform healthContainer)
     {
         Debug.Log("init  : "+ playerData.playerObject.materialColor);
         playerData = playerdata;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         _fixedJoystick = fixedJoystick;
         HealthContainer = healthContainer;
         gameObject.transform.position = MystartPoint.position;
-        _GameOver = gameOver;
+        //_GameOver = gameOver;
         AddHealth(playerdata.health);
     }
 
@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
         private void OnCollisionEnter(Collision other)
     {
         // Check if the ball collides with the red teleportation point
-        bool isTeleport = checkTeleportTags(other.gameObject.tag);
+        //bool isTeleport = checkTeleportTags(other.gameObject.tag);
+        bool isTeleport = TeleportColliders.CheckCollider(other.gameObject.tag);
         if (isTeleport)
         {
             // Teleport the ball to the blue teleportation point
@@ -55,37 +56,70 @@ public class Player : MonoBehaviour
             }
         }
 
-        bool isWall = checkWallTags(other.gameObject.tag);
+        bool isWall = WallColliders.CheckCollider(other.gameObject.tag);
 
         if(isWall)
         {
             // TODO : Add Game over here
             CheckPlayerHealth();
         } 
-        bool isGameOverPoint = checkGameOverTags(other.gameObject.tag);
+        bool isGameOverPoint = GameOverColliders.CheckCollider(other.gameObject.tag);
 
         if(isGameOverPoint)
         {
             // TODO : Add Game over here
-            _GameOver.gameObject.SetActive(true);
-            _GameOver.OnWin();
+           // _GameOver.gameObject.SetActive(true);
+            GameModel.screenManager.showScreen(ScreenEnum.GameWinScreen, playerData.currentLevelData);
+            //_GameOver.OnWin();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the ball collides with the red teleportation point
+        bool isTeleport = TeleportColliders.CheckCollider(other.tag);
+        if (isTeleport)
+        {
+            // Teleport the ball to the blue teleportation point
+            TeleportPoint teleportPointComponent = other.gameObject.GetComponent<TeleportPoint>();
+            if (teleportPointComponent.isBallOutSideTeleportPoint)
+            {
+                transform.position = teleportPointComponent.SetBallToSiblingPosition().position;
+            }
+        }
+
+        bool isWall = WallColliders.CheckCollider(other.gameObject.tag);
+
+        if (isWall)
+        {
+            // TODO : Add Game over here
+            CheckPlayerHealth();
+        }
+        bool isGameOverPoint = GameOverColliders.CheckCollider(other.gameObject.tag);
+
+        if (isGameOverPoint)
+        {
+            // TODO : Add Game over here
+            //_GameOver.gameObject.SetActive(true);
+            GameModel.screenManager.showScreen(ScreenEnum.GameWinScreen, playerData.currentLevelData);
+            //_GameOver.OnWin();
         }
     }
 
 
-   /* private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        bool isTeleport = checkTeleportTags(other.tag);
+        bool isTeleport = TeleportColliders.CheckCollider(other.tag);
         if (isTeleport)
         {
             // Teleport the ball to the blue teleportation point
             TeleportPoint teleportPointComponent = other.GetComponent<TeleportPoint>();
             teleportPointComponent.isBallOutSideTeleportPoint = true;
         }
-    }*/ 
+    }
     private void OnCollisionExit(Collision other)
     {
-        bool isTeleport = checkTeleportTags(other.gameObject.tag);
+        bool isTeleport = TeleportColliders.CheckCollider(other.gameObject.tag);
         if (isTeleport)
         {
             // Teleport the ball to the blue teleportation point
@@ -99,8 +133,9 @@ public class Player : MonoBehaviour
         if(playerData.health <= 1)
         {
             DeactivateHealth();
-            _GameOver.gameObject.SetActive(true);
-            _GameOver.OnLoose();
+            GameModel.screenManager.showScreen(ScreenEnum.GameOverScreen, playerData.currentLevelData);
+            //_GameOver.gameObject.SetActive(true);
+            //_GameOver.OnLoose();
         }
         else
         {
@@ -203,29 +238,6 @@ public class Player : MonoBehaviour
             Debug.LogWarning("Invalid color name: " + name);
             return Color.white; // Return default color (white) if the color name is invalid
         }
-    }
-
-    public bool checkTeleportTags(string tagName)
-    {
-        if(tagName == "Red" || tagName == "Blue" || tagName == "Green" || tagName == "Yellow" || tagName == "Maroon" || tagName == "Brown" || tagName == "Purple" || tagName == "Lime") {
-            return true;
-        }
-        return false;
-    }
-    public bool checkWallTags(string tagName)
-    {
-        if(tagName == "Wall") {
-            return true;
-        }
-        return false;
-    }
-    
-    public bool checkGameOverTags(string tagName)
-    {
-        if(tagName == "GameOver") {
-            return true;
-        }
-        return false;
     }
 
     // Start is called before the first frame updat

@@ -8,6 +8,11 @@ public class Co_Ordinates
     public float x;
     public float y;
     public float z;
+    public Co_Ordinates(Vector3 Vec3Data)
+    {
+        x = Vec3Data.x; y = Vec3Data.y; z = Vec3Data.z;
+    }
+   
 }
 
 [System.Serializable]
@@ -30,26 +35,37 @@ public class RoomEntityObject
 public class SingleRoom
 {
     //public RoomEntityObjectTransform roomTransform;
-    public List<RoomEntityObject> walls;
-    public List<RoomEntityObject> teleportPoints;
+    public List<RoomEntityObject> walls = new List<RoomEntityObject>();
+    public List<RoomEntityObject> teleportPoints = new List<RoomEntityObject>();
     public RoomEntityObject gameOverPoint;
-    public List<RoomEntityObject> startPoints;
+    public List<RoomEntityObject> startPoints = new List<RoomEntityObject>();
 }
 
 [System.Serializable]
 public class Rooms
 {
     public SingleRoom startRoom;
-    public List<SingleRoom> CommonRooms;
+    public List<SingleRoom> CommonRooms = new List<SingleRoom>();
     public SingleRoom gameOverRoom;
 }
 
 
-[CreateAssetMenu(fileName = "NewLevelData", menuName = "Level Data", order = 51)]
+public class LevelData
+{
+    public int levelNumber;
+    public string levelName;
+    public string groundShape;
+    public Co_Ordinates groundScale;
+    public float timeLimit;
+    public Rooms rooms;
+}
+/*[CreateAssetMenu(fileName = "NewLevelData", menuName = "Level Data", order = 51)]
 public class LevelData : ScriptableObject
 {
     public int levelNumber;
     public string levelName;
+    public string groundShape;
+    public Co_Ordinates groundScale;
     public float timeLimit;
     public Rooms rooms;
-}
+}*/

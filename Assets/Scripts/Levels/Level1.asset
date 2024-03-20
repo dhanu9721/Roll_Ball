@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 1
   levelName: Level_1
+  groundShape: Square
+  groundScale:
+    x: 0.54
+    y: 200
+    z: 0.54
   timeLimit: 10
   rooms:
     startRoom:
       walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: -33
@@ -34,7 +39,7 @@ MonoBehaviour:
             y: 10
             z: 4
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: -66
@@ -99,7 +104,7 @@ MonoBehaviour:
     CommonRooms:
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: -33
@@ -114,7 +119,7 @@ MonoBehaviour:
             y: 10
             z: 4
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: -66
@@ -178,7 +183,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 33
@@ -242,7 +247,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 0
@@ -306,7 +311,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 31
@@ -321,7 +326,7 @@ MonoBehaviour:
             y: 10
             z: 4
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 66
@@ -385,7 +390,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 0
@@ -449,7 +454,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 33
@@ -464,7 +469,7 @@ MonoBehaviour:
             y: 10
             z: 4
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: 66
@@ -528,7 +533,7 @@ MonoBehaviour:
       startPoints: []
     - walls:
       - tag: Wall
-        materialColor: Red
+        materialColor: White
         transform:
           Position:
             x: -33

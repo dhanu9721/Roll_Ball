@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+//using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
     public GameObject Room;
     public Transform RoomContainer;
+
+    public GameObject Boundaries;
  
     public PlayerManager playerManager;
-    public LevelManager levelManager;
+    //public LevelManager2 levelManager;
 
     public List<TeleportPoint> teleportPortPointsList = new List<TeleportPoint>();
 
-    public float rotationSpeed = 3f; // Adjust the speed as needed
-    public float tiltAngle = 3f;
+    public float rotationSpeed = 1.5f; // Adjust the speed as needed
+    public float tiltAngle = 1.5f;
 
     void Start()
     {
-        GenerateRoom();
+        //GenerateRoom();
     }
 
     public void Restart()
@@ -26,21 +29,35 @@ public class Ground : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform boundaryChild in Boundaries.transform)
+        {
+            boundaryChild.gameObject.SetActive(false);
+        }
         playerManager.Restart();
         gameObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 0, 0));
        // gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        GenerateRoom();
+        //GenerateRoom();
     }
-    void GenerateRoom()
+    public void GenerateRoom(LevelData levelData)
     {
         // Instantiate the prefab
-        LevelData levelData = levelManager.GetCurrentLevelData();
-        Debug.Log(levelData.rooms.startRoom.ToString()) ;
-
+        // LevelData levelData = levelManager.GetCurrentLevelData();
+        // Debug.Log(levelData.rooms.startRoom.ToString()) ;
+        Restart();
+        SetGroundBoundary(levelData);
         GenerateRoomEntities(levelData);
+        GameState.GetInstance().SetCurrentGameState(GameStateType.Start);
        
     }
 
+    public void SetGroundBoundary(LevelData levelData)
+    {
+        Debug.Log(levelData.groundShape);
+        GameObject levelBoundary = Boundaries.transform.Find(levelData.groundShape).gameObject;
+        Debug.Log(levelBoundary);
+        levelBoundary.SetActive(true);
+        Boundaries.transform.localScale = new Vector3(levelData.groundScale.x, levelData.groundScale.y, levelData.groundScale.z);
+    }
 
 
     public void GenerateRoomEntities(LevelData levelData)
@@ -101,11 +118,17 @@ public class Ground : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-        float tiltAmountX = Mathf.Sin(Time.time * rotationSpeed) * tiltAngle;
-        float tiltAmountZ = Mathf.Cos(Time.time * rotationSpeed) * tiltAngle;
+        if(GameState.GetInstance().GetCurrentGameState() == GameStateType.Start)
+        {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            //transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+            float tiltAmountX = Mathf.Sin(Time.time * rotationSpeed) * tiltAngle;
+            float tiltAmountZ = Mathf.Cos(Time.time * rotationSpeed) * tiltAngle;
 
-        Quaternion targetRotation = Quaternion.Euler(tiltAmountX, transform.rotation.eulerAngles.y, tiltAmountZ);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+            Quaternion targetRotation = Quaternion.Euler(tiltAmountX, transform.rotation.eulerAngles.y, tiltAmountZ);
+            //Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, tiltAmountX, tiltAmountZ);
+            //Quaternion targetRotation = Quaternion.Euler(tiltAmountX, tiltAmountZ, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        }
     }
 }

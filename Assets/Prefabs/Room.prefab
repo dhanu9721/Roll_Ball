@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wall: {fileID: 516642222841514563, guid: db725f618c3afdc4684cca9de4268708, type: 3}
-  TeleportPoint: {fileID: 7292514602845350411, guid: 41d9aa6ee70baf44c934dd5c1b46e151, type: 3}
+  TeleportPoint: {fileID: 2566349962777501176, guid: b641c4d6eab922c4590212897b0897b1, type: 3}
   GameOverPoint: {fileID: 4877925744374385579, guid: 226d4cdaa66b68249957b32b27d200a2, type: 3}
   GameStartPoint: {fileID: 4877925744374385579, guid: 71e04d5c075599c46a7896b8730caadf, type: 3}
   WallContainer: {fileID: 2415802488048548189}

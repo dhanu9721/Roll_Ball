@@ -56,27 +56,41 @@ public class EventEmitter
     }
 }
 
-
-public class EventEmitterTest : MonoBehaviour
+public static class EVENT_TYPES
 {
-    private EventEmitter eventEmitter = new EventEmitter();
+    public const string VIBRATE_EFFECT = "VIBRATE_EFFECT";
+}
+
+
+public class EventEmitterClass
+{
+    public EventEmitter VibrateEventEmitter = new EventEmitter();
+
+    public static EventEmitterClass instance = null;
+
+    public static EventEmitterClass GetInstance()
+    {
+        if(EventEmitterClass.instance == null)
+            EventEmitterClass.instance = new EventEmitterClass();
+        return EventEmitterClass.instance;
+    }
 
     void Start()
     {
-        // Example usage
+       /* // Example usage
         Action<object[]> listener = (args) => { Debug.Log($"Event received with message: {args[0]}"); };
-        eventEmitter.On("testEvent", listener);
+        VibrateEventEmitter.On("testEvent", listener);
 
         // Emitting event
-        eventEmitter.Emit("testEvent", "Hello World!");
+        VibrateEventEmitter.Emit("testEvent", "Hello World!");
 
         // Once example
-        eventEmitter.Once("onceEvent", (args) => { Debug.Log($"Once event received with message: {args[0]}"); });
-        eventEmitter.Emit("onceEvent", "This will be received.");
-        eventEmitter.Emit("onceEvent", "This will not be received.");
+        VibrateEventEmitter.Once("onceEvent", (args) => { Debug.Log($"Once event received with message: {args[0]}"); });
+        VibrateEventEmitter.Emit("onceEvent", "This will be received.");
+        VibrateEventEmitter.Emit("onceEvent", "This will not be received.");
 
         // Removing listener
-        eventEmitter.RemoveListener("testEvent", listener);
-        eventEmitter.Emit("testEvent", "This message won't be logged.");
+        VibrateEventEmitter.RemoveListener("testEvent", listener);
+        VibrateEventEmitter.Emit("testEvent", "This message won't be logged.");*/
     }
 }

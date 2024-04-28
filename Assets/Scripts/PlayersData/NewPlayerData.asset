@@ -15,10 +15,9 @@ MonoBehaviour:
   playerName: Dhananjay
   playerLevel: 1
   health: 3
-  localScale: {x: 10, y: 10, z: 10}
+  localScale: {x: 12, y: 12, z: 12}
   localRotation: {x: 0, y: 0, z: 0, w: 1}
   speed: 25
-  currentLevelData: {fileID: 11400000, guid: cfbd2ef0a67c81c448938b0458706d5c, type: 2}
   playerObject:
     tag: Ball
     materialColor: '#ffffff'

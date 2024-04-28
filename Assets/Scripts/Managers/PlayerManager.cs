@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private FixedJoystick _fixedJoystick;
+    [SerializeField] private ArrowController arrowController;
     public LocalPlayerData[] localPlayerData;
     public GameObject player;
     public Transform PlayerContainer;
@@ -37,6 +38,7 @@ public class PlayerManager : MonoBehaviour
        // instance.transform.position = myStartPoint.position;
         instance.transform.localPosition = myStartPoint.position;
         Player playerComponent = instance.GetComponent<Player>();
+        arrowController.SetMovingObject(playerComponent);
         //healthManager.AddHealth(playerData.health);
         playerComponent.init(playerData,myStartPoint, teleportPointsList, _fixedJoystick, healthContainer);
         //instance.transform.parent = PlayerContainer;

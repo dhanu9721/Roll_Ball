@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 //using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
     public GameObject Room;
+    public GameObject SpikeBall;
+
     public Transform RoomContainer;
+    public Transform PlayerContainer;
+    public Transform SpikeBallsContainer;
 
     public GameObject Boundaries;
  
@@ -45,9 +50,19 @@ public class Ground : MonoBehaviour
         // Debug.Log(levelData.rooms.startRoom.ToString()) ;
         Restart();
         SetGroundBoundary(levelData);
+        GenerateSpikeBalls(levelData);
         GenerateRoomEntities(levelData);
         GameState.GetInstance().SetCurrentGameState(GameStateType.Start);
        
+    }
+
+    public void GenerateSpikeBalls(LevelData levelData)
+    {
+        foreach (var SpikeBallPos in levelData.spikeBallsPosition)
+        {
+            GameObject SpikeBallInstance = Instantiate(SpikeBall, SpikeBallsContainer);
+            SpikeBallInstance.transform.position = new Vector3(SpikeBallPos.x, SpikeBallPos.y, SpikeBallPos.z);
+        }
     }
 
     public void SetGroundBoundary(LevelData levelData)

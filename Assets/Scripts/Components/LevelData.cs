@@ -53,11 +53,14 @@ public class Rooms
 public class LevelData
 {
     public int levelNumber;
+    public int starCounts = 0;
+    public bool isCompleted = false;
     public string levelName;
     public string groundShape;
     public Co_Ordinates groundScale;
     public float timeLimit;
     public Rooms rooms;
+    public List<Co_Ordinates> spikeBallsPosition = new List<Co_Ordinates>();
 }
 /*[CreateAssetMenu(fileName = "NewLevelData", menuName = "Level Data", order = 51)]
 public class LevelData : ScriptableObject

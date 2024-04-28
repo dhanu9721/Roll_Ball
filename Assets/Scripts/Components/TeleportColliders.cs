@@ -5,6 +5,11 @@ using UnityEngine;
 public static class ColliderType
 {
     public const string Wall = "Wall";
+    public const string Boundary = "Boundary";
+    public const string SpikeBall = "SpikeBall";
+
+    public const string Ground = "Ground";
+
     public const string GameOver = "GameOver";
     public const string Red = "Red";
     public const string Blue = "Blue";
@@ -46,6 +51,10 @@ public class WallColliders
         switch (colliderType)
         {
             case ColliderType.Wall:
+                return true;
+            case ColliderType.Boundary:
+                return true;
+            case ColliderType.SpikeBall:
                 return true;
             default: return false;
         }

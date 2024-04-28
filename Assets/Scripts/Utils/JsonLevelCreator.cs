@@ -17,24 +17,37 @@ public class JsonLevelCreator : MonoBehaviour
     {
         //foreach (var level in LevelPrefabs)
         //{
-            LevelData currentLevelData = new LevelData();
-            Transform GroundShapes = currentGround.transform.Find("All Shapes");
-            currentLevelData.levelNumber = index+1;
-            currentLevelData.levelName = "Level_" + (index+1);
-            currentLevelData.timeLimit = 10;
-            currentLevelData.groundScale = new Co_Ordinates(GroundShapes.localScale);
+        LevelData currentLevelData = new LevelData();
+        Transform GroundShapes = currentGround.transform.Find("All Shapes");
+        currentLevelData.levelNumber = index+1;
+        currentLevelData.levelName = "Level_" + (index+1);
+        currentLevelData.timeLimit = 10;
+        currentLevelData.groundScale = new Co_Ordinates(GroundShapes.localScale);
 
-            foreach (Transform groundShape in GroundShapes)
+        foreach (Transform groundShape in GroundShapes)
+        {
+            if (groundShape.gameObject.activeSelf)
             {
-                if (groundShape.gameObject.activeSelf)
-                {
-                    currentLevelData.groundShape = groundShape.name;
-                }
+                currentLevelData.groundShape = groundShape.name;
             }
-            currentLevelData.rooms = new Rooms();
-            RoomContainerData(currentGround.transform.GetChild(1), currentLevelData);
-            return currentLevelData;
+        }
+        currentLevelData.rooms = new Rooms();
+        RoomContainerData(currentGround.transform.GetChild(1), currentLevelData);
+
+        var spikeBallContainer = currentGround.transform.Find("SpikeBallsContainer");
+        if(spikeBallContainer != null) { 
+            SpikeBallsContainer(spikeBallContainer, currentLevelData);
+        }
+        return currentLevelData;
         //}
+    }
+
+    public void SpikeBallsContainer(Transform SpikeBallcontainer, LevelData currentLevelData)
+    {
+        foreach (Transform spikeBall in SpikeBallcontainer)
+        {
+            currentLevelData.spikeBallsPosition.Add(new Co_Ordinates(spikeBall.transform.position));
+        }
     }
     public void RoomContainerData(Transform RoomsContainer, LevelData currentLevelData)
     {
@@ -111,6 +124,8 @@ public class JsonLevelCreator : MonoBehaviour
         return entityTransform;
     }
 
+
+
     public void CreateLevel()
     {
         Debug.Log("Level create");
@@ -119,7 +134,8 @@ public class JsonLevelCreator : MonoBehaviour
             string json = JsonUtility.ToJson(GroundData(LevelPrefabs[levelNumber],levelNumber));
 
             // Write the JSON data to a file
-            string folderPath = Application.dataPath + "/Scripts/Levels";
+            //ring folderPath = Application.dataPath + "/Scripts/Levels";
+            string folderPath = Application.dataPath + "/Resources/Levels";
             string fileName = "Level_" + (levelNumber + 1) + ".json";
             string filePath = Path.Combine(folderPath, fileName);
             File.WriteAllText(filePath, json);

@@ -19,6 +19,18 @@ public class Setting : AbstractPopUp
     {
         GameModel.popUpManager.hide(PopUpType.setting);
     }
+    public void OnClickSound()
+    {
+        GameModel.popUpManager.show(PopUpType.sounds);
+    } 
+    public void OnClickControls()
+    {
+        GameModel.popUpManager.show(PopUpType.controls);
+    }
+    public void OnClickQuit()
+    {
+        GameModel.popUpManager.show(PopUpType.QuitGame);
+    }
 
     public override void onHide()
     {

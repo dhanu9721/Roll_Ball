@@ -8,6 +8,9 @@ public class TeleportPoint : MonoBehaviour
     public TeleportPoint SiblingTeleportPoint;
     [SerializeField]private ParticleSystem pSystem;
     [SerializeField]private ParticleSystem p2System;
+    [SerializeField]private GameObject circle;
+    [SerializeField]private Material circleMaterial;
+
     private ParticleSystem.ColorOverLifetimeModule colorOverLifetimeModule;
     public string myTag;
     public string endColorName = "#FFFFFF";
@@ -43,6 +46,34 @@ public class TeleportPoint : MonoBehaviour
         // Set the color gradient
         colorOverLifetimeModule.color = gradient;
         pSystem.startColor = GetColorByName(teleportPointData.materialColor);
+
+
+        setCircleColor(teleportPointData);
+    }
+
+    public void setCircleColor(RoomEntityObject teleportPointData)
+    {
+        Renderer objectRenderer = circle.GetComponent<Renderer>();
+
+        if (objectRenderer != null)
+        {
+            // Check if objectMaterial is not null before assigning it
+            if (circleMaterial != null)
+            {
+                Material newMaterial = new Material(circleMaterial);
+
+                // Assuming GetColorByName returns a Color value
+                Color colorByName = GetColorByName(teleportPointData.materialColor);
+
+                // Set the color of the material
+                newMaterial.color = colorByName;
+                objectRenderer.material = newMaterial;
+            }
+            else
+            {
+                Debug.LogWarning("objectMaterial is null. Ensure it is assigned.");
+            }
+        }
     }
 
     private Color GetColorByName(string name)

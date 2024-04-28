@@ -17,6 +17,9 @@ TagManager:
   - Ball
   - Aqua
   - Gray
+  - Boundary
+  - Ground
+  - SpikeBall
   layers:
   - Default
   - TransparentFX

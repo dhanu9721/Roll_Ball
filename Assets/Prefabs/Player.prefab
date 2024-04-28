@@ -197,7 +197,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3558779115730137324}
@@ -293,11 +293,10 @@ MonoBehaviour:
   playerData:
     playerName: Dhananjay
     playerLevel: 0
-    health: 3
+    health: 1
     localScale: {x: 10, y: 10, z: 10}
     localRotation: {x: 0, y: 0, z: 0, w: 1}
     speed: 25
-    currentLevelData: {fileID: 11400000, guid: cfbd2ef0a67c81c448938b0458706d5c, type: 2}
     playerObject:
       tag: 
       materialColor: 
@@ -324,8 +323,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6556710157667493983}
   serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
+  m_Mass: 1
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -336,12 +335,12 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
-  m_Constraints: 116
+  m_Interpolate: 0
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &7152000003016370393
 GameObject:

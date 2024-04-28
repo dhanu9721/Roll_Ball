@@ -7,6 +7,8 @@ using UnityEngine;
 public enum PopUpType
 {
     setting = 0,
+    sounds,
+    controls,
     QuitGame,
     MiniMap,
     None = 100,
